@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { 
+    min-height: 100vh;
+    background-color: blue;
+}
+
+
+.heart {
+  @apply relative w-[100px] h-[90px] mt-[10px] before:absolute after:absolute before:top-0 
+  after:top-0 before:w-[52px] after:w-[52px] before:h-[80px] after:h-[80px]
+   before:bg-red-600 after:bg-red-600 before:rounded-tl-[50px] after:rounded-tl-[50px] before:rounded-tr-[50px] after:rounded-tr-[50px]
+   before:left-[50px] before:rotate-[-45deg] before:origin-[0_100%]
+   after:left-0 after:rotate-45 after:origin-[100%_100%]
+}
+  
+/* 
+.diamond {
+  @apply
+} */
