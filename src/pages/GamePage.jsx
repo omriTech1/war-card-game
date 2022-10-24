@@ -16,13 +16,13 @@ const GamePage = () => {
       <section className="flex-1">
         <div className="flex flex-col gap-y-16">
           <ScoreTicker score={63} name={context}/>
-          <Card number={player1Cards[0].number}/>
+          <Card number={player1Cards[0].number} type={player2Cards[0].type}/>
         </div>
       </section>
       <section className="flex-1">
         <div className="flex flex-col gap-y-16 items-end">
           <ScoreTicker name={'יריב 3'} />
-          <Card number={player2Cards[0].number} type={'heart'}/>
+        <Card number={player2Cards[0].number} type={player2Cards[0].type}/>
         </div>
       </section>
       <button className="absolute text-4xl bg-fuchsia-300 outline outline-1 rounded-full font-serif h-24 w-96 left-[50%] translate-x-[-50%] bottom-60">

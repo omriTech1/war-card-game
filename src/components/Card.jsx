@@ -29,8 +29,8 @@ const Card = ({ number, type }) => {
       <div className="text-4xl flex-1 flex justify-center items-center gap-x-3">
         {/* {'❤️'.repeat(number)} */}
         <div className="flex flex-wrap">
-        {Array.from(Array(number), (x) => {
-          return <div className="heart"></div>
+        {Array.from(Array(number), (x, index) => {
+          return <div key={index} className={`${type}`}></div>
         })}
         </div> 
       </div>
