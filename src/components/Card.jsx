@@ -6,7 +6,7 @@ const Card = ({ number, type }) => {
   const textColor = useMemo(() => {
     return ["heart", "diamond"].includes(type)
       ? "text-red-600"
-      : "text-black";
+      : "text-black"
   }, [type]);
 
   const symbol = useMemo(() => {

@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import { Context } from "./context";
 
 function App() {
-  const [context, setContext] = useState("שימי");
+  const [context, setContext] = useState('');
 
   return (
     <Context.Provider value={[context, setContext]}>
