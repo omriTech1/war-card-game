@@ -5,7 +5,8 @@ import { Context } from "../context";
 import deck from '../deck.json'
 
 const GamePage = () => {
-  const [context, setContext] = useContext(Context);
+  const [context,_] = useContext(Context);
+
   const shuffledDeck = deck.sort((a, b) => 0.5 - Math.random());
 
   const player1Cards = shuffledDeck.slice(0, shuffledDeck.length/2)

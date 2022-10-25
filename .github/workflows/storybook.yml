@@ -5,5 +5,4 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: cd spacebar/spacebar
-       yarn storybook
+      - run: cd war-card-game yarn storybook
