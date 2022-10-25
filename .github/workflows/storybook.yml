@@ -5,4 +5,6 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: cd war-card-game yarn storybook
+      - run: cd war-card-game
+      - run: ls
+      - run: yarn storybook
