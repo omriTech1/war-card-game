@@ -7,7 +7,7 @@
   "scripts": {
     "predeploy": "npm run build-storybook",
     "deploy-storybook": "gh-pages -d storybook-static",
-    "build-storybook": "build-storybook -o docs-build",
+    "build-storybook": "build-storybook",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
