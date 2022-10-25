@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
+import {PropTypes} from 'prop-types';
+
 
 const Card = ({ number, type }) => {
-  // let symbol = null;
   const textColor = useMemo(() => {
     return ["heart", "diamond"].includes(type)
       ? "text-red-600"
@@ -25,15 +26,11 @@ const Card = ({ number, type }) => {
     }
   },[number])
 
-  
-
-  
 
   return (
     <div className="flex h-[500px] w-96 flex-col justify-between rounded-lg bg-white p-3 outline outline-1">
       <div className={`${textColor} text-3xl`}>{symbol}</div>
       <div className="flex flex-1 items-center justify-center gap-x-3 text-4xl">
-        {/* {'❤️'.repeat(number)} */}
         <div className="flex flex-wrap">
           {Array.from(Array(number), (x, index) => {
             return <div key={index} className={`${type}`}></div>;
@@ -46,3 +43,9 @@ const Card = ({ number, type }) => {
 };
 
 export default Card;
+
+
+Card.propTypes = {
+  number : PropTypes.number,
+  type: PropTypes.oneOf(['heart', 'diamond','club','spade'])
+}

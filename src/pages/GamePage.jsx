@@ -15,8 +15,8 @@ const GamePage = () => {
     <div className="h-screen bg-green-300 flex p-5">
       <section className="flex-1">
         <div className="flex flex-col gap-y-16">
-          <ScoreTicker score={63} name={context}/>
-          <Card number={player1Cards[0].number} type={player2Cards[0].type}/>
+          <ScoreTicker  name={context}/>
+          <Card number={player1Cards[0].number} type={player1Cards[0].type}/>
         </div>
       </section>
       <section className="flex-1">
