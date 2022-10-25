@@ -1,5 +1,3 @@
-
-
 module.exports = {
   "stories": [
     "../src/**/*.stories.mdx",
@@ -17,5 +15,11 @@ module.exports = {
   },
   "features": {
     "storyStoreV7": true
+  },
+  async viteFinal(config) {
+    if(process.env?.STORYBOOK_BASE) {
+      config.base = process.env.STORYBOOK_BASE;
+    }
+    return config;
   }
 }
