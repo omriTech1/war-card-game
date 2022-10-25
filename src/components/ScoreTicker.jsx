@@ -19,6 +19,10 @@ ScoreTicker.defaultProps = {
 
 
 
+
+
+
+
 ScoreTicker.propTypes = {
   score: PropTypes.number,
   name: PropTypes.string,
