@@ -1,0 +1,8 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out storybook with github actions
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: yarn storybook
