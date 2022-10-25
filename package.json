@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://omritech1.github.io/war-card-game",
+  "homepage": "http://omriTech1.github.io/war-card-game",
   "scripts": {
     "predeploy": "npm run build-storybook",
     "deploy-storybook": "gh-pages -d storybook-static",

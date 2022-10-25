@@ -13,6 +13,7 @@ const ScoreTicker = ({ score, name }) => {
 export default ScoreTicker;
 
 
+
 ScoreTicker.defaultProps = {
   score: 0
 }

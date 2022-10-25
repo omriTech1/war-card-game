@@ -12,6 +12,7 @@ jobs:
           persist-credentials: false
       - name: Install and Build 🔧
         run: | # Install npm packages and build the Storybook files
+          nvm install 16
           yarn
           yarn run build-storybook
       - name: Deploy 🚀
