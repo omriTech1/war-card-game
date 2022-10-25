@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 const Card = ({ number, type }) => {
-  let symbol = null;
-  const textColor = ["heart", "diamond"].includes(type)
-    ? "text-red-600"
-    : "text-black";
+  // let symbol = null;
+  const textColor = useMemo(() => {
+    return ["heart", "diamond"].includes(type)
+      ? "text-red-600"
+      : "text-black";
+  }, [type]);
 
-  if (number === 1) {
-    symbol = "A";
-  } else if (number > 10) {
-    switch (number) {
-      case 11:
-        symbol = "J";
-        break;
-      case 12:
-        symbol = "Q";
-        break;
-      case 13:
-        symbol = "K";
-        break;
-    } 
-  } else {
-    symbol = number
-  }
+  const symbol = useMemo(() => {
+    if (number === 1) {
+      return "A";
+    } else if (number > 10) {
+      switch (number) {
+        case 11:
+          return "J";
+        case 12:
+          return "Q";
+        case 13:
+          return "K";
+      }
+    } else {
+      return number;
+    }
+  },[number])
+
+  
+
+  
 
   return (
     <div className="flex h-[500px] w-96 flex-col justify-between rounded-lg bg-white p-3 outline outline-1">
