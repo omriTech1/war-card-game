@@ -13,14 +13,12 @@
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006"
   },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.6",
+ 
+  "devDependencies": {
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.2"
-  },
-  "devDependencies": {
+    "react-router-dom": "^6.4.2",
     "@babel/core": "^7.19.6",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
