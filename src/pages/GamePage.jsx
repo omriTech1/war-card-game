@@ -1,33 +1,53 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "../components/Card";
 import ScoreTicker from "../components/ScoreTicker";
 import { Context } from "../context";
-import deck from '../deck.json'
 
 const GamePage = () => {
-  const [context,_] = useContext(Context);
+  const [context, _] = useContext(Context);
+  const [player1Cards, setPlayer1Cards] = useState()
+  const [player2Cards, setPlayer2Cards] = useState()
+  useEffect(() => {
+    let deck = createDeck();
+    deck.sort((a, b) => 0.5 - Math.random());
 
-  const shuffledDeck = deck.sort((a, b) => 0.5 - Math.random());
+    setPlayer1Cards(deck.slice(0, deck.length / 2))
+    setPlayer2Cards(deck.slice(deck.length / 2))
+    console.log(deck);
+  }, []);
 
-  const player1Cards = shuffledDeck.slice(0, shuffledDeck.length/2)
-  const player2Cards = shuffledDeck.slice(shuffledDeck.length/2)
+  const createDeck = () => {
+    const deck = [];
+    const types = ["heart", "club", "diamond", "spade"];
+    let number = 1;
+    for (let i = 1; i < 53; i++) {
+      deck.push({
+        number,
+        type: types[number % 4],
+      });
+      if (i % 4 === 0) {
+        number++;
+      }
+    }
+    return deck;
+  };
 
   return (
-    <div className="h-screen bg-green-300 flex p-5">
+    <div className="flex h-screen bg-green-300 p-5">
       <section className="flex-1">
         <div className="flex flex-col gap-y-16">
-          <ScoreTicker  name={context}/>
-          <Card number={player1Cards[0].number} type={player1Cards[0].type}/>
+          <ScoreTicker name={context} />
+          {player1Cards && <Card number={player1Cards[0]?.number} type={player1Cards[0]?.type}/>}
         </div>
       </section>
       <section className="flex-1">
-        <div className="flex flex-col gap-y-16 items-end">
-          <ScoreTicker name={'יריב 3'} />
-        <Card number={player2Cards[0].number} type={player2Cards[0].type}/>
+        <div className="flex flex-col items-end gap-y-16">
+          <ScoreTicker name={"יריב 3"} />
+         {player2Cards &&  <Card number={player2Cards[0]?.number} type={player2Cards[0]?.type} />}
         </div>
       </section>
-      <button className="absolute text-4xl bg-fuchsia-300 outline outline-1 rounded-full font-serif h-24 w-96 left-[50%] translate-x-[-50%] bottom-60">
-        התחל משחק 
+      <button className="absolute left-[50%] bottom-60 h-24 w-96 translate-x-[-50%] rounded-full bg-fuchsia-300 font-serif text-4xl outline outline-1">
+        התחל משחק
       </button>
     </div>
   );
