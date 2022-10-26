@@ -31,7 +31,7 @@ const Card = ({ number, type }) => {
     <div className="flex h-[500px] w-96 flex-col justify-between rounded-lg bg-white p-3 outline outline-1">
       <div className={`${textColor} text-3xl`}>{symbol}</div>
       <div className="flex flex-1 items-center justify-center gap-x-3 text-4xl">
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center items-center">
           {Array.from(Array(number), (x, index) => {
             return <div key={index} className={`${type}`}></div>;
           })}
