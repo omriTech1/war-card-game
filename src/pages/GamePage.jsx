@@ -5,17 +5,14 @@ import ScoreTicker from "../components/ScoreTicker";
 import { userDetailsStore } from "../context";
 
 const GamePage = () => {
-  
   const [context, _] = useContext(userDetailsStore);
-  const [player1Cards, setPlayer1Cards] = useState()
-  const [player2Cards, setPlayer2Cards] = useState()
-  const [isGameOverModalOpen, setIsGameOverModalOpen] = useState(false)
+  const [isGameOverModalOpen, setIsGameOverModalOpen] = useState(false);
+  const [deck, setDeck] = useState();
+
   useEffect(() => {
     let deck = createDeck();
     deck.sort((a, b) => 0.5 - Math.random());
-
-    setPlayer1Cards(deck.slice(0, deck.length / 2))
-    setPlayer2Cards(deck.slice(deck.length / 2))
+    setDeck(deck);
   }, []);
 
   const createDeck = () => {
@@ -34,22 +31,44 @@ const GamePage = () => {
     return deck;
   };
 
+  const playTurn = () => {
+    // opens both of the cards and checks to see which card is higher
+    // increases winner's score accordingly
+  };
+
   return (
     <div className="flex h-screen bg-green-300 p-5">
-      {isGameOverModalOpen && <GameOverModal isWinner={false}/>}
+      {isGameOverModalOpen && <GameOverModal isWinner={false} />}
       <section className="flex-1">
         <div className="flex flex-col gap-y-16">
           <ScoreTicker name={context} />
-          {player1Cards && <Card number={player1Cards[0]?.number} type={player1Cards[0]?.type} isFlipped={false}/>}
+          {player1Cards && (
+            <Card
+              number={deck[0]?.number}
+              type={deck[0]?.type}
+              isFlipped={false}
+            />
+          )}
         </div>
       </section>
       <section className="flex-1">
         <div className="flex flex-col items-end gap-y-16">
           <ScoreTicker name={"יריב 3"} />
-         {player2Cards &&  <Card number={player2Cards[0]?.number} type={player2Cards[0]?.type} isFlipped={false} />}
+          {player2Cards && (
+            <Card
+              number={deck[1]?.number}
+              type={deck[1]?.type}
+              isFlipped={false}
+            />
+          )}
         </div>
       </section>
-      <button className="absolute left-[50%] bottom-60 h-24 w-96 translate-x-[-50%] rounded-full bg-fuchsia-300 font-serif text-4xl outline outline-1">
+      <button
+        className="absolute left-[50%] bottom-60 h-24 w-96
+       translate-x-[-50%] rounded-full
+        bg-fuchsia-300
+         font-serif text-4xl outline outline-1"
+      >
         התחל משחק
       </button>
     </div>
