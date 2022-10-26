@@ -14,7 +14,6 @@ jobs:
         run: echo "https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}"
 
       - name: Install and Build 🔧
-        run: echo "this is the github repo ${{ github.repository }}"
         run: | # Install npm packages and build the Storybook files
           yarn
           STORYBOOK_BASE="/war-card-game/" yarn run build-storybook
