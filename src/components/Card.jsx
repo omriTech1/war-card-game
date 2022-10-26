@@ -33,7 +33,9 @@ const Card = ({ number, type }) => {
       <div className="flex flex-1 items-center justify-center gap-x-3 text-4xl">
         <div className="flex flex-wrap justify-center items-center">
           {Array.from(Array(number), (x, index) => {
-            return <div key={index} className={`${type}`}></div>;
+            return <div key={index} className={`${type}`}>
+              {type === 'club' && '♣️'} 
+            </div>;
           })}
         </div>
       </div>
