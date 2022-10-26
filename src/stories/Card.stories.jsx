@@ -20,5 +20,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   number: 12,
   type: "heart",
+  isFlipped:false
 };
  

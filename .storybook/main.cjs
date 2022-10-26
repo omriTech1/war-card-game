@@ -17,10 +17,11 @@ module.exports = {
     "storyStoreV7": true
   },
   async viteFinal(config) {
-    if(process.env?.STORYBOOK_BASE) {
-      console.info(`Setting storybook base path to ${process.env.STORYBOOK_BASE}`);
-      config.base = process.env.STORYBOOK_BASE ||  config.base;
-    }
+    config.base = '/storybook-static/'
+    // if(process.env?.STORYBOOK_BASE) {
+    //   console.info(`Setting storybook base path to ${process.env.STORYBOOK_BASE}`);
+    //   config.base = process.env.STORYBOOK_BASE ||  config.base;
+    // }
     return config;
   }
 }

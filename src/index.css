@@ -30,3 +30,11 @@ body {
   .clover {
     
   }
+
+
+  .test {
+    background-color: #6c6cc7;
+    opacity: 0.6;
+    background-image: radial-gradient(circle at center center, #e117a9, #6c6cc7), repeating-radial-gradient(circle at center center, #e117a9, #e117a9, 24px, transparent 48px, transparent 24px);
+    background-blend-mode: multiply;
+  }

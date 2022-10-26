@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import {PropTypes} from 'prop-types';
 
 
-const Card = ({ number, type }) => {
+const Card = ({ number, type, isFlipped}) => {
   const textColor = useMemo(() => {
     return ["heart", "diamond"].includes(type)
       ? "text-red-600"
@@ -19,13 +19,17 @@ const Card = ({ number, type }) => {
         case 12:
           return "Q";
         case 13:
-          return "K";
+          return   "K";
       }
     } else {
       return number;
     }
   },[number])
 
+  if (!isFlipped) {
+  return <div className="flex h-[500px] w-96 flex-col justify-between rounded-lg test p-3 outline outline-1">
+  </div>
+  }
 
   return (
     <div className="flex h-[500px] w-96 flex-col justify-between rounded-lg bg-white p-3 outline outline-1">
@@ -48,6 +52,8 @@ export default Card;
 
 
 Card.propTypes = {
+  isFlipped: false,
   number : PropTypes.number,
   type: PropTypes.oneOf(['heart', 'diamond','club','spade'])
 }
+
