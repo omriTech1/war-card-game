@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import Card from "../components/Card";
 import ScoreTicker from "../components/ScoreTicker";
-import { Context } from "../context";
+import { userDetailsStore } from "../context";
 
 const GamePage = () => {
-  const [context, _] = useContext(Context);
+  const [context, _] = useContext(userDetailsStore);
   const [player1Cards, setPlayer1Cards] = useState()
   const [player2Cards, setPlayer2Cards] = useState()
   useEffect(() => {
