@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../context";
+import { userDetailsStore } from "../context";
 const HomePage = () => {
-    const [context, setContext] = useContext(Context);
+    const [context, setContext] = useContext(userDetailsStore);
     const [input, setInput] = useState(context);
     const navigate = useNavigate()
     // console.log(context);

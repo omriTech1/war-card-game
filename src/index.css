@@ -15,3 +15,18 @@ body {
    after:left-0 after:rotate-45 after:origin-[100%_100%]
 }
   
+.diamond {
+  @apply bg-red-600 w-10 h-10 m-5 rounded-tl-md rounded-br-md -rotate-45
+}
+
+.spade {
+    @apply relative w-[100px] h-[90px] mt-[10px] before:absolute after:absolute before:top-0 
+    after:top-0 before:w-[52px] after:w-[52px] before:h-[80px] after:h-[80px]
+     before:bg-black after:bg-black before:rounded-tl-[50px] after:rounded-tl-[50px] before:rounded-tr-[50px] after:rounded-tr-[50px]
+     before:left-[50px] before:rotate-[-45deg] before:origin-[0_100%]
+     after:left-0 after:rotate-45 after:origin-[100%_100%] rotate-180
+  }
+
+  .clover {
+    
+  }

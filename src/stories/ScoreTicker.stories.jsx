@@ -4,6 +4,9 @@ import ScoreTicker from '../components/ScoreTicker';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
+  parameters: {
+    layout: "centered",
+  },
   title: 'Example/ScoreTicker',
   component: ScoreTicker,
 

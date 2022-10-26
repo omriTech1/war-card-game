@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Card from "../components/Card";
+import GameOverModal from "../components/GameOverModal";
 import ScoreTicker from "../components/ScoreTicker";
 import { userDetailsStore } from "../context";
 
@@ -13,7 +14,6 @@ const GamePage = () => {
 
     setPlayer1Cards(deck.slice(0, deck.length / 2))
     setPlayer2Cards(deck.slice(deck.length / 2))
-    console.log(deck);
   }, []);
 
   const createDeck = () => {
@@ -34,6 +34,7 @@ const GamePage = () => {
 
   return (
     <div className="flex h-screen bg-green-300 p-5">
+      <GameOverModal isWinner={false}/>
       <section className="flex-1">
         <div className="flex flex-col gap-y-16">
           <ScoreTicker name={context} />
