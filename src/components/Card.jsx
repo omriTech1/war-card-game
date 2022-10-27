@@ -1,12 +1,10 @@
-import React, { useMemo } from "react";
-import {PropTypes} from 'prop-types';
+import { PropTypes } from "prop-types";
+import { CardNumberSymbols } from "./CardNumberSymbols";
+import { useMemo } from "react";
 
-
-const Card = ({ number, type, isFlipped}) => {
-  const textColor = useMemo(() => {
-    return ["heart", "diamond"].includes(type)
-      ? "text-red-600"
-      : "text-black"
+const Card = ({ number, type, isFlipped, ...props }) => {
+  const cardColor = useMemo(() => {
+    return ["heart", "diamond"].includes(type) ? "text-red-600" : "text-black";
   }, [type]);
 
   const symbol = useMemo(() => {
@@ -19,41 +17,81 @@ const Card = ({ number, type, isFlipped}) => {
         case 12:
           return "Q";
         case 13:
-          return   "K";
+          return "K";
+        case 14:
+          return "JOKER";
       }
     } else {
       return number;
     }
-  },[number])
+  }, [number]);
 
-  if (!isFlipped) {
-  return <div className="flex h-[500px] w-96 flex-col justify-between rounded-lg test p-3 outline outline-1">
-  </div>
-  }
+  const shape = useMemo(() => {
+    switch (type) {
+      case "heart":
+        return "♥";
+      case "club":
+        return "♣";
+      case "diamond":
+        return "♦";
+      case "spade":
+        return "♠";
+    }
+  }, [type]);
 
   return (
-    <div className="flex h-[500px] w-96 flex-col justify-between rounded-lg bg-white p-3 outline outline-1">
-      <div className={`${textColor} text-3xl`}>{symbol}</div>
-      <div className="flex flex-1 items-center justify-center gap-x-3 text-4xl">
-        <div className="flex flex-wrap justify-center items-center">
-          {Array.from(Array(number), (x, index) => {
-            return <div key={index} className={`${type}`}>
-              {type === 'club' && '♣️'} 
-            </div>;
-          })}
-        </div>
-      </div>
-      <div className={`${textColor} self-end text-3xl`}>{symbol}</div>
+    <div
+      {...props}
+      className={`${
+        isFlipped ? "bg-white" : "flipped-card"
+      } ${cardColor} relative flex aspect-[2/3] w-full rounded-lg border p-[3%]`}
+    >
+      {isFlipped && (
+        <>
+          <div className="absolute top-1 left-1">
+            <svg width="100%" viewBox="0 0 50 50">
+              <g>
+                <text fill="currentColor" fontSize="8" x={1} y={8}>
+                  {symbol}
+                </text>
+              </g>
+              <g>
+                <text fill="currentColor" fontSize="8" x={1} y={16}>
+                  {shape}
+                </text>
+              </g>
+            </svg>
+          </div>
+
+          {number <= 10 && (
+            <div className="flex items-center justify-center">
+              <CardNumberSymbols number={number} shape={shape} width="70%" />
+            </div>
+          )}
+          <div className="absolute right-1 bottom-1">
+            <svg width="100%" viewBox="0 0 50 50">
+              <g>
+                <text fill="currentColor" fontSize="8" x={43} y={40}>
+                  {symbol}
+                </text>
+              </g>
+              <g>
+                <text fill="currentColor" fontSize="8" x={43} y={48}>
+                  {shape}
+                </text>
+              </g>
+            </svg>
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
 export default Card;
 
-
 Card.propTypes = {
-  isFlipped: false,
-  number : PropTypes.number,
-  type: PropTypes.oneOf(['heart', 'diamond','club','spade'])
-}
-
+  isFlipped: PropTypes.bool,
+  number: PropTypes.number,
+  type: PropTypes.oneOf(["heart", "diamond", "club", "spade"]),
+};

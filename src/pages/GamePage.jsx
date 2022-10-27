@@ -1,35 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Card from "../components/Card";
 import GameOverModal from "../components/GameOverModal";
 import ScoreTicker from "../components/ScoreTicker";
 import { userDetailsStore } from "../context";
+import { useDeckOfCards } from "../hooks/useDeckOfCard";
 
 const GamePage = () => {
   const [context, _] = useContext(userDetailsStore);
   const [isGameOverModalOpen, setIsGameOverModalOpen] = useState(false);
-  const [deck, setDeck] = useState();
-
-  useEffect(() => {
-    let deck = createDeck();
-    deck.sort((a, b) => 0.5 - Math.random());
-    setDeck(deck);
-  }, []);
-
-  const createDeck = () => {
-    const deck = [];
-    const types = ["heart", "club", "diamond", "spade"];
-    let number = 1;
-    for (let i = 1; i < 53; i++) {
-      deck.push({
-        number,
-        type: types[number % 4],
-      });
-      if (i % 4 === 0) {
-        number++;
-      }
-    }
-    return deck;
-  };
+  const [deck, {shuffle}] = useDeckOfCards();
 
   const playTurn = () => {
     // opens both of the cards and checks to see which card is higher
@@ -42,7 +21,7 @@ const GamePage = () => {
       <section className="flex-1">
         <div className="flex flex-col gap-y-16">
           <ScoreTicker name={context} />
-          {player1Cards && (
+          {deck && (
             <Card
               number={deck[0]?.number}
               type={deck[0]?.type}
@@ -54,7 +33,7 @@ const GamePage = () => {
       <section className="flex-1">
         <div className="flex flex-col items-end gap-y-16">
           <ScoreTicker name={"יריב 3"} />
-          {player2Cards && (
+          {deck && (
             <Card
               number={deck[1]?.number}
               type={deck[1]?.type}

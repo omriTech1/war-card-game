@@ -20,6 +20,30 @@ export const Primary = Template.bind({});
 Primary.args = {
   number: 12,
   type: "heart",
-  isFlipped:false
+  isFlipped:true
 };
- 
+
+export const Secondary = Template.bind({})
+
+Secondary.args = {
+  number: 12,
+  type: "heart",
+  isFlipped:false
+}
+
+export const Sizes = (args) => {
+  return <div className="flex gap-4">
+    <div className="w-[300px]">
+      <Card {...args} />
+    </div>
+    <div className="w-[200px]">
+    <Card {...args} />
+    </div>
+    <div className="w-[100px]">
+    <Card {...args} />
+    </div>
+    <div className="w-[50px]">
+    <Card {...args} />
+    </div>
+  </div>
+}
